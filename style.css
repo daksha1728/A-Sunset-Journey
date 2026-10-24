@@ -1,0 +1,1143 @@
+/* ==========================================================================
+   DAKSHU — 10 DAY SUNSET BIRTHDAY JOURNEY (MASTER STYLESHEET)
+   Cinematic Twilight / Cosmic Sunset Theme
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS VARIABLES & SYSTEM THEME TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  --bg-deep: #0a0306;
+  --bg-base: #0f0509;
+  --bg-surface: #190910;
+  --bg-card: rgba(28, 11, 17, 0.62);
+  --bg-card-hover: rgba(38, 16, 24, 0.78);
+
+  --color-coral: #ff6b4a;
+  --color-rose: #ff416c;
+  --color-gold: #ffb347;
+  --color-amber: #ff8a4c;
+  --color-cream: #fff1e6;
+  --color-muted: rgba(255, 241, 230, 0.65);
+
+  --border-glass: rgba(255, 107, 74, 0.22);
+  --border-glass-hover: rgba(255, 179, 71, 0.45);
+  --border-glow: rgba(255, 65, 108, 0.35);
+
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-serif: "Cinzel", "Playfair Display", Georgia, serif;
+
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. GLOBAL RESETS & FOUNDATION (PREVENTS WHITE SCREEN)
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--bg-deep);
+  color: var(--color-cream);
+  font-family: var(--font-main);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.home-body {
+  background-color: var(--bg-deep);
+  color: var(--color-cream);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* --------------------------------------------------------------------------
+   3. COSMIC SUNSET ATMOSPHERIC SKY & CANVAS
+   -------------------------------------------------------------------------- */
+.sunset-atmospheric-sky {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 50% 30%, #260a16 0%, #14050b 50%, #080204 100%);
+}
+
+.sky-gradient-base {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(255, 107, 74, 0.18) 0%, rgba(255, 65, 108, 0.1) 40%, transparent 75%);
+}
+
+.sky-film-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.sky-horizon-flare {
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130vw;
+  height: 55vh;
+  background: radial-gradient(ellipse at center, rgba(255, 138, 76, 0.22) 0%, rgba(255, 65, 108, 0.08) 50%, transparent 80%);
+  filter: blur(50px);
+}
+
+.sky-aurora-beam {
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(255, 65, 108, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+.sky-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(75px);
+  pointer-events: none;
+  opacity: 0.35;
+  transition: transform 0.2s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+.sky-orb.orb-major {
+  top: 25%;
+  left: 50%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, var(--color-rose), var(--color-coral));
+  transform: translate(-50%, -50%);
+}
+
+.sky-orb.orb-minor {
+  top: 65%;
+  left: 10%;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, var(--color-amber), var(--color-rose));
+}
+
+.sky-orb.orb-tertiary {
+  top: 60%;
+  right: 10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--color-gold), var(--color-coral));
+}
+
+/* Star Dust Canvas */
+.ambient-stars-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. PRELAUNCH COUNTDOWN MODE (LOCKDOWN STATE)
+   -------------------------------------------------------------------------- */
+html.prelaunch-locked,
+body.prelaunch-locked {
+  overflow: hidden !important;
+  height: 100% !important;
+}
+
+/* Hide regular UI in prelaunch mode */
+.prelaunch-locked header,
+.prelaunch-locked main,
+.prelaunch-locked footer {
+  display: none !important;
+}
+
+.prelaunch-logo-stage {
+  display: none;
+}
+
+.prelaunch-locked .prelaunch-logo-stage {
+  display: flex;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.prelaunch-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  animation: prelaunchFadeIn 1.3s var(--ease-cinematic) forwards;
+}
+
+@keyframes prelaunchFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Prelaunch Logo & Aura */
+.prelaunch-logo-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-cinematic);
+}
+
+.prelaunch-logo-wrapper:active {
+  transform: scale(0.94);
+}
+
+.prelaunch-logo-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(380px, 80vw);
+  height: min(380px, 80vw);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 65, 108, 0.45) 0%,
+    rgba(255, 107, 74, 0.3) 40%,
+    rgba(255, 179, 71, 0.12) 65%,
+    transparent 80%
+  );
+  filter: blur(45px);
+  animation: haloBreathe 5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.prelaunch-logo-image {
+  position: relative;
+  z-index: 2;
+  width: auto;
+  max-width: min(320px, 80vw);
+  max-height: min(180px, 32vh);
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(255, 107, 74, 0.65))
+    drop-shadow(0 0 45px rgba(255, 65, 108, 0.45));
+}
+
+@keyframes haloBreathe {
+  0% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.95; }
+}
+
+/* Glassmorphic Countdown Box */
+.prelaunch-countdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: rgba(26, 10, 15, 0.68);
+  padding: 18px 30px;
+  border-radius: 24px;
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(255, 107, 74, 0.2);
+  margin-bottom: 24px;
+  position: relative;
+  user-select: none;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.prelaunch-countdown:hover {
+  box-shadow: 0 25px 60px -8px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(255, 107, 74, 0.35);
+}
+
+.countdown-unit-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 65px;
+}
+
+.countdown-num {
+  font-size: clamp(1.75rem, 4.8vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffffff 15%, #ffb347 60%, #ff6b4a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 18px rgba(255, 107, 74, 0.45);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 6px;
+}
+
+.countdown-tag {
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.countdown-colon {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: rgba(255, 107, 74, 0.7);
+  margin-bottom: 12px;
+  animation: colonBlink 1.5s infinite;
+}
+
+@keyframes colonBlink {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; text-shadow: 0 0 10px rgba(255, 107, 74, 0.9); }
+}
+
+/* Glitch Trigger Animations */
+.prelaunch-countdown.is-glitching,
+.prelaunch-countdown.box-glitching {
+  animation: countdownGlitchPulse 0.3s steps(2, start) infinite;
+  border-color: rgba(255, 65, 108, 0.9);
+  box-shadow: 0 0 35px rgba(255, 65, 108, 0.8), -3px 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.prelaunch-countdown.is-glitching .countdown-num,
+.countdown-num.glitch-active {
+  color: #ff0055 !important;
+  text-shadow: -3px 0 #00ffff, 3px 0 #ff0077, 0 0 25px #ff6b4a !important;
+  transform: skewX(-4deg) scale(1.08);
+}
+
+@keyframes countdownGlitchPulse {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-3px, 2px) skewX(-2deg); }
+  50% { transform: translate(3px, -2px) skewX(2deg); }
+  75% { transform: translate(-2px, -1px) skewX(-1deg); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Hint Text Under Timer */
+.prelaunch-hint-wrapper {
+  max-width: 580px;
+  padding: 0 16px;
+}
+
+.prelaunch-hint-text {
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-cream);
+  line-height: 1.6;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
+}
+
+.hint-sparkle {
+  color: var(--color-gold);
+  display: inline-block;
+  margin: 0 4px;
+  filter: drop-shadow(0 0 8px var(--color-coral));
+}
+
+.prelaunch-subhint {
+  display: inline-block;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-amber);
+  opacity: 0.95;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   5. INTERACTIVE PARTICLES, EASTER EGGS & AUDIO ENGINE UI
+   -------------------------------------------------------------------------- */
+/* Cursor Trail Particle */
+.interactive-trail-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99;
+  font-size: 1.1rem;
+  user-select: none;
+  animation: floatParticle 1.2s ease-out forwards;
+}
+
+@keyframes floatParticle {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.6) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translate(calc(-50% + (var(--rand-x) * 1px)), -75px) scale(1.2) rotate(var(--rand-rot));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + (var(--rand-x) * 2px)), -130px) scale(0.3) rotate(var(--rand-rot));
+  }
+}
+
+/* Secret Whisper Toast */
+.secret-whisper-toast {
+  position: fixed;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%) translateY(30px);
+  background: rgba(28, 10, 16, 0.92);
+  border: 1px solid rgba(255, 179, 71, 0.5);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 107, 74, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 12px 26px;
+  border-radius: 50px;
+  color: var(--color-cream);
+  font-size: 0.92rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+  transition: all 0.4s var(--ease-cinematic);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  max-width: 90vw;
+  text-align: center;
+}
+
+.secret-whisper-toast.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast-sparkle {
+  color: var(--color-gold);
+  animation: pulseToast 1.5s infinite;
+}
+
+@keyframes pulseToast {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* Screen Pulse Vignette */
+body.heartbeat-screen-pulse::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  box-shadow: inset 0 0 100px 30px rgba(255, 65, 108, 0.4);
+  pointer-events: none;
+  z-index: 9999;
+  animation: pulseVignette 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pulseVignette {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.85; }
+}
+
+/* Shooting Star */
+.shooting-star {
+  position: fixed;
+  width: 140px;
+  height: 2px;
+  background: linear-gradient(90deg, #fff, rgba(255, 179, 71, 0.8), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 95;
+  filter: drop-shadow(0 0 8px var(--color-gold));
+  animation: shootCross 0.9s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes shootCross {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(-35deg) scaleX(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-500px, 400px) rotate(-35deg) scaleX(1.4);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. SITE HEADER & NAVIGATION (UNLOCKED STATE)
+   -------------------------------------------------------------------------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 16px 24px;
+}
+
+.site-nav {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(22, 9, 14, 0.65);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 10px 22px;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.6);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-brand-fallback {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+  color: var(--color-gold);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--color-muted);
+  transition: color 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   7. HERO CINEMATIC STAGE (UNLOCKED)
+   -------------------------------------------------------------------------- */
+.hero-stage {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 80px;
+  text-align: center;
+}
+
+.hero-cinematic-wrapper {
+  max-width: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+.hero-logo-box {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.logo-backdrop-halo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255, 65, 108, 0.4) 0%, transparent 70%);
+  filter: blur(40px);
+}
+
+.hero-logo-image {
+  position: relative;
+  z-index: 2;
+  max-width: 220px;
+}
+
+.hero-eyebrow-text {
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--color-amber);
+  margin-bottom: 12px;
+}
+
+.eyebrow-sparkle {
+  color: var(--color-gold);
+}
+
+.hero-name-title {
+  font-size: clamp(2.8rem, 8vw, 4.8rem);
+  font-weight: 900;
+  letter-spacing: 4px;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #ffffff 20%, #ffb347 60%, #ff416c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 20px rgba(255, 65, 108, 0.4));
+  margin-bottom: 16px;
+}
+
+.name-heart {
+  -webkit-text-fill-color: initial;
+  display: inline-block;
+  filter: drop-shadow(0 0 12px var(--color-rose));
+}
+
+.hero-glow-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 380px;
+  margin: 16px 0 24px;
+}
+
+.divider-beam-left,
+.divider-beam-right {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-coral));
+}
+
+.divider-beam-right {
+  background: linear-gradient(90deg, var(--color-coral), transparent);
+}
+
+.divider-core-gem {
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  background: var(--color-gold);
+  box-shadow: 0 0 10px var(--color-gold);
+}
+
+.hero-journey-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.headline-part-one {
+  color: var(--color-amber);
+  font-size: 0.9em;
+}
+
+.headline-part-two {
+  color: var(--color-cream);
+}
+
+.hero-emotional-subtitle {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  font-style: italic;
+  color: var(--color-muted);
+  max-width: 580px;
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, var(--color-rose) 0%, var(--color-coral) 50%, var(--color-gold) 100%);
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 30px rgba(255, 65, 108, 0.45);
+  transition: transform 0.25s var(--ease-cinematic), box-shadow 0.25s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(255, 65, 108, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   8. JOURNEY SECTION & PROGRESS CARD
+   -------------------------------------------------------------------------- */
+.journey-stage-section {
+  position: relative;
+  z-index: 10;
+  padding: 60px 0 120px;
+}
+
+.journey-intro-banner {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.journey-kicker {
+  font-size: 0.78rem;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: var(--color-amber);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.journey-headline-gradient {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #fff, var(--color-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.journey-narrative-subtext {
+  font-style: italic;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+}
+
+.journey-milestone-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.marker-line-left,
+.marker-line-right {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-coral));
+}
+.marker-line-right {
+  background: linear-gradient(90deg, var(--color-coral), transparent);
+}
+
+.marker-core-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  box-shadow: 0 0 8px var(--color-gold);
+}
+
+/* Glass Progress Container */
+.journey-progress-container.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 24px 28px;
+  max-width: 720px;
+  margin: 0 auto 70px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.progress-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.progress-label-tag {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: var(--color-amber);
+}
+
+.progress-status-headline {
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--color-cream);
+}
+
+.progress-track-wrapper {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.progress-bar-fill {
+  position: relative;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-rose), var(--color-gold));
+  border-radius: 10px;
+  transition: width 1s var(--ease-cinematic);
+}
+
+.progress-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.progress-percentage-pill {
+  font-weight: 800;
+  color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   9. CONNECTED JOURNEY TIMELINE & CARDS
+   -------------------------------------------------------------------------- */
+.journey-timeline-track {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline-vertical-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255, 107, 74, 0.18);
+  transform: translateX(-50%);
+}
+
+.timeline-spine-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, var(--color-rose), var(--color-gold));
+  box-shadow: 0 0 14px var(--color-coral);
+  transition: height 0.3s ease;
+}
+
+.timeline-cards-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-row {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.timeline-row.left-aligned {
+  justify-content: flex-start;
+}
+
+.timeline-row.right-aligned {
+  justify-content: flex-end;
+}
+
+.timeline-center-node {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-deep);
+  border: 2px solid var(--color-amber);
+  box-shadow: 0 0 10px var(--color-coral);
+  z-index: 5;
+}
+
+.timeline-row.is-current .timeline-center-node {
+  background: var(--color-gold);
+  box-shadow: 0 0 18px var(--color-gold);
+  transform: translate(-50%, -50%) scale(1.3);
+}
+
+.timeline-card-wrapper {
+  width: calc(50% - 40px);
+  opacity: 0;
+  transform: translateY(28px);
+  transition: all 0.7s var(--ease-cinematic);
+}
+
+.timeline-card-wrapper.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Timeline Journey Card */
+.timeline-journey-card {
+  display: block;
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: 20px;
+  padding: 24px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.35s var(--ease-cinematic);
+  cursor: pointer;
+}
+
+.timeline-journey-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glass-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(255, 107, 74, 0.25);
+}
+
+.timeline-journey-card.is-locked {
+  opacity: 0.75;
+  filter: grayscale(0.2);
+}
+
+.day-starter-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  color: var(--color-gold);
+  background: rgba(255, 179, 71, 0.12);
+  border: 1px solid rgba(255, 179, 71, 0.3);
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.card-header-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.card-numeral-pill {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: var(--color-amber);
+}
+
+.card-emblem-icon {
+  font-size: 1.25rem;
+}
+
+.card-story-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-cream);
+  margin-bottom: 6px;
+}
+
+.card-date-badge {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-bottom: 18px;
+}
+
+.card-status-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+}
+
+.card-status-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.tag-unlocked { color: #55efc4; }
+.tag-completed { color: var(--color-gold); }
+.tag-current { color: var(--color-coral); }
+.tag-locked { color: rgba(255, 255, 255, 0.45); }
+
+.card-arrow-cue {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-amber);
+}
+
+/* --------------------------------------------------------------------------
+   10. SITE FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer.cinematic-footer {
+  position: relative;
+  z-index: 10;
+  padding: 60px 0;
+  text-align: center;
+  border-top: 1px solid rgba(255, 107, 74, 0.15);
+  background: rgba(10, 3, 6, 0.8);
+}
+
+.footer-content-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-brand-title {
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  font-weight: 900;
+  color: var(--color-cream);
+}
+
+.footer-journey-caps {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--color-amber);
+}
+
+.footer-signature-line {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.footer-heart {
+  color: var(--color-rose);
+  display: inline-block;
+  filter: drop-shadow(0 0 6px var(--color-rose));
+}
+
+/* --------------------------------------------------------------------------
+   11. RESPONSIVE DESIGN (MOBILE & TABLET ADAPTATION)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Countdown adjustments for smaller phones */
+  .prelaunch-countdown {
+    gap: 8px;
+    padding: 14px 18px;
+  }
+
+  .countdown-unit-box {
+    min-width: 48px;
+  }
+
+  .countdown-num {
+    font-size: 1.55rem;
+  }
+
+  .countdown-tag {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+
+  .countdown-colon {
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+  }
+
+  /* Single-column Mobile Timeline */
+  .timeline-vertical-spine {
+    left: 20px;
+  }
+
+  .timeline-center-node {
+    left: 20px;
+  }
+
+  .timeline-row.left-aligned,
+  .timeline-row.right-aligned {
+    justify-content: flex-end;
+  }
+
+  .timeline-card-wrapper {
+    width: calc(100% - 50px);
+  }
+}

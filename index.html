@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAKSHU — 10 Day Birthday Journey ❤️🌅</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Immediate zero-flash lock evaluation (19 February 2027, 12:00 AM IST) -->
+  <script>
+    (function () {
+      const UNLOCK_TIMESTAMP = new Date("2027-02-19T00:00:00+05:30").getTime();
+      if (Date.now() < UNLOCK_TIMESTAMP) {
+        document.documentElement.classList.add("prelaunch-locked");
+      }
+    })();
+  </script>
+</head>
+<body class="home-body">
+
+  <!-- Multi-layered Sunset Horizon & Cosmic Atmosphere -->
+  <div class="sunset-atmospheric-sky" aria-hidden="true">
+    <div class="sky-gradient-base"></div>
+    <div class="sky-film-grain"></div>
+    <div class="sky-orb orb-major" id="parallaxOrb1"></div>
+    <div class="sky-orb orb-minor" id="parallaxOrb2"></div>
+    <div class="sky-orb orb-tertiary" id="parallaxOrb3"></div>
+    <div class="sky-horizon-flare"></div>
+    <div class="sky-aurora-beam"></div>
+  </div>
+
+  <!-- Ambient Micro-Star & Dust Canvas -->
+  <canvas class="ambient-stars-canvas" id="starsCanvas" aria-hidden="true"></canvas>
+
+  <!-- Centered Prelaunch Stage: Logo + Countdown Timer + Hint -->
+  <div class="prelaunch-logo-stage" id="prelaunchLogoStage" aria-label="DAKSHU Prelaunch">
+    <div class="prelaunch-content-container">
+      
+      <!-- Centered Glowing Logo Above Timer -->
+      <div class="prelaunch-logo-wrapper">
+        <div class="prelaunch-logo-halo" aria-hidden="true"></div>
+        <img src="logo.png" alt="DAKSHU Logo" class="prelaunch-logo-image">
+      </div>
+
+      <!-- Sunset Countdown Timer with Glitch -->
+      <div class="prelaunch-countdown" id="prelaunchCountdown" aria-label="Countdown to Journey Unlock">
+        <div class="countdown-unit-box">
+          <span class="countdown-num" id="timerDays">00</span>
+          <span class="countdown-tag">DAYS</span>
+        </div>
+        <span class="countdown-colon" aria-hidden="true">:</span>
+        <div class="countdown-unit-box">
+          <span class="countdown-num" id="timerHours">00</span>
+          <span class="countdown-tag">HOURS</span>
+        </div>
+        <span class="countdown-colon" aria-hidden="true">:</span>
+        <div class="countdown-unit-box">
+          <span class="countdown-num" id="timerMinutes">00</span>
+          <span class="countdown-tag">MINUTES</span>
+        </div>
+        <span class="countdown-colon" aria-hidden="true">:</span>
+        <div class="countdown-unit-box">
+          <span class="countdown-num" id="timerSeconds">00</span>
+          <span class="countdown-tag">SECONDS</span>
+        </div>
+      </div>
+
+      <!-- Romantic Hint Message for Dakshu -->
+      <div class="prelaunch-hint-wrapper">
+        <p class="prelaunch-hint-text">
+          <span class="hint-sparkle">✦</span>
+          A special sunset story is waiting to unfold for Dakshu...
+          <span class="hint-sparkle">✦</span>
+        </p>
+        <span class="prelaunch-subhint">Unlocks 19 February 2027 at 12:00 AM IST 🌅🤎</span>
+      </div>
+
+      
+
+    </div>
+  </div>
+
+  <!-- Floating Glass Navbar -->
+  <header>
+    <nav class="site-nav" aria-label="Main Navigation">
+      <a href="index.html" class="nav-brand" aria-label="Dakshu Birthday Journey Home">
+        <img src="logo.png" alt="DAKSHU Logo" class="nav-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="nav-brand-fallback">DAKSHU 💛</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="#journey" class="nav-link">Journey</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-stage" id="hero" aria-label="Cinematic Introduction">
+      <div class="hero-cinematic-wrapper" id="heroParallaxContent">
+        
+        <div class="hero-logo-box seq-item seq-logo">
+          <div class="logo-backdrop-halo" aria-hidden="true"></div>
+          <img src="logo.png" alt="DAKSHU Logo" class="hero-logo-image" onerror="this.style.display='none';">
+        </div>
+
+        <p class="hero-eyebrow-text seq-item seq-eyebrow">
+          <span class="eyebrow-sparkle">✦</span> A LITTLE SOMETHING FOR <span class="eyebrow-sparkle">✦</span>
+        </p>
+
+        <h1 class="hero-name-title seq-item seq-recipient">
+          <span class="name-text">DAKSHU</span>
+          <span class="name-heart" aria-hidden="true">💛</span>
+        </h1>
+
+        <div class="hero-glow-divider seq-item seq-divider" aria-hidden="true">
+          <span class="divider-beam-left"></span>
+          <span class="divider-core-gem"></span>
+          <span class="divider-beam-right"></span>
+        </div>
+
+        <h2 class="hero-journey-headline">
+          <span class="headline-part-one seq-item seq-title-top">THE</span>
+          <span class="headline-part-two seq-item seq-title-bottom">BIRTHDAY JOURNEY</span>
+        </h2>
+
+        <p class="hero-emotional-subtitle seq-item seq-subtitle">
+          “Some days. Some surprises. One special journey.”
+        </p>
+
+        <div class="hero-action-group seq-item seq-cta">
+          <a href="#journey" class="btn btn-primary hero-start-btn" id="startJourneyBtn">
+            <span>START THE JOURNEY</span>
+            <span class="cta-arrow" aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section class="journey-stage-section" id="journey">
+      <div class="container">
+
+        <div class="journey-intro-banner">
+          <span class="journey-kicker">WHERE SUNSETS MEET MEMORIES</span>
+          <h2 class="journey-headline-gradient">THE JOURNEY BEGINS</h2>
+          <p class="journey-narrative-subtext">“Every day unlocks a little more of the story.”</p>
+          
+          <div class="journey-milestone-marker" aria-hidden="true">
+            <span class="marker-line-left"></span>
+            <span class="marker-core-dot"></span>
+            <span class="marker-line-right"></span>
+          </div>
+        </div>
+
+        <!-- Interactive Journey Progress Card -->
+        <div class="journey-progress-container glass-card" id="journeyProgressCard" role="region" aria-label="Current Journey Status">
+          <div class="progress-meta-row">
+            <span class="progress-label-tag">YOUR JOURNEY</span>
+            <span class="progress-status-headline" id="progressStatusText">CHECKING DATES...</span>
+          </div>
+          <div class="progress-track-wrapper">
+            <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;">
+              <div class="progress-shimmer"></div>
+            </div>
+          </div>
+          <div class="progress-footer-row">
+            <span class="progress-hint" id="progressHintText">Calculating sunset timeline...</span>
+            <span class="progress-percentage-pill" id="progressPercentagePill">0%</span>
+          </div>
+        </div>
+
+        <!-- Connected Timeline & Cards -->
+        <div class="journey-timeline-track" id="journeyTimeline">
+          <div class="timeline-vertical-spine" aria-hidden="true">
+            <div class="timeline-spine-glow" id="timelineSpineGlow"></div>
+          </div>
+          <div class="timeline-cards-flow" id="timelineCardsContainer"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Sunset Footer -->
+  <footer class="site-footer cinematic-footer">
+    <div class="footer-ambient-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="footer-content-lockup">
+        <h3 class="footer-brand-title">DAKSHU <span class="footer-heart">💛</span></h3>
+        <p class="footer-journey-caps">10 DAYS &bull; 10 MOMENTS &bull; ONE SPECIAL JOURNEY</p>
+        <p class="footer-signature-line">Made with <span class="footer-heart">🧡</span> for Dakshu</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="global.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
